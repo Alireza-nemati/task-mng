@@ -5,14 +5,15 @@ namespace App\Livewire;
 use App\Models\Task;
 use Livewire\Component;
 
-class TaskRow extends Component
+class Tasks extends Component
 {
     public $search = '';
 
+
     public function render()
     {
-        return view('livewire.task-row',[
-            'tasks' => Task::search($this->search,10)
+        return view('livewire.tasks',[
+            'tasks'=>Task::search($this->search,10)
         ]);
     }
 }
