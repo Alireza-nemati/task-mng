@@ -12,12 +12,18 @@ class Task extends Model
     //
     use HasFactory;
 
-    public static function search($value, $limit = 5)
+    protected $fillable = [
+        'title',
+        'description',
+        'completed',
+        'priority',
+    ];
+
+    public static function search($value,$paginate = 5)
     {
         return self::where('title', 'like', "%{$value}%")
             ->orWhere('description', 'like', "%{$value}%")
-            ->limit($limit)
-            ->get();
+            ->paginate($paginate);
     }
 
 

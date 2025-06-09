@@ -11,7 +11,7 @@
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                    placeholder="Search"/>
         </div>
-        <div class="relative overflow-x-auto ">
+        <div class="relative overflow-x-auto mb-2">
             <table class="w-full text-sm text-center rtl:text-right text-gray-500 ">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
@@ -36,10 +36,10 @@
                 @foreach($tasks as $task)
                     <tr class="odd:bg-white  even:bg-gray-50  border-gray-200">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                            {{ $task->title }}
+                            <a href="{{ route('tasks.show',$task->id) }}">{{ $task->title }}</a>
                         </th>
                         <td class="px-6 py-4">
-                            {{ Str::words($task->description, 5, '...') }}
+                            <a href="{{ route('tasks.show',$task->id) }}" class="@if($task->completed) line-through @endif">{{ Str::words($task->description, 5, '...') }}</a>
                         </td>
                         <td class="px-6 py-4">
                             <x-badge priority="{{ $task->priority }}" />
@@ -54,12 +54,14 @@
                             </div>
                         </td>
                         <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-green-500  hover:underline">Done</a>
+                            @if(!$task->completed)
+                            <a href="#" wire:click="completed({{ $task->id }})" class="font-medium text-green-500  hover:underline">Done</a>
                             |
+
                             <a href="#" class="font-medium text-blue-600  hover:underline">Edit</a>
-                            |
-                            <a href="#" wire:click="delete"
-                               wire:confirm="Are you sure you want to delete this post?"
+                            |@endif
+                            <a href="#" wire:click="delete({{ $task->id }})"
+                               wire:confirm="Are you sure you want to delete this task?"
                                class="font-medium text-red-600  hover:underline">Remove</a>
 
                         </td>
@@ -67,6 +69,7 @@
                 @endforeach
                 </tbody>
             </table>
+            {{ $tasks->links() }}
         </div>
     </div>
 </div>
