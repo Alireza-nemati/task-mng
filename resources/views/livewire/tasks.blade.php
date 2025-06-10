@@ -5,7 +5,7 @@
 </x-slot>
 
 <div class="py-12">
-    <div class="max-w-7xl mx-auto  p-4 bg-white sm:rounded-lg">
+    <div class="max-w-6xl mx-auto  p-4 bg-white sm:rounded-lg">
         <div class="mb-3 lg:max-w-3/12">
             <input wire:model.live="search" type="text" id="first_name"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -71,6 +71,8 @@
             </table>
 
             {{ $tasks->links() }}
+
         </div>
     </div>
+
 </div>

@@ -29,6 +29,10 @@ class Tasks extends Component
         $task->update(['completed' => true]);
     }
 
+
+
+
+
     public function render()
     {
         return view('livewire.tasks', [
