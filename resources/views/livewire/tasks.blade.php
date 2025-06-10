@@ -11,8 +11,8 @@
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                    placeholder="Search"/>
         </div>
-        <div class="relative overflow-x-auto mb-2">
-            <table class="w-full text-sm text-center rtl:text-right text-gray-500 ">
+        <div class="relative overflow-x-auto">
+            <table class="w-full text-sm text-center rtl:text-right text-gray-500 mb-3">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -34,7 +34,7 @@
                 </thead>
                 <tbody>
                 @foreach($tasks as $task)
-                    <tr class="odd:bg-white  even:bg-gray-50  border-gray-200">
+                    <tr class="odd:bg-white  even:bg-gray-50  border-gray-200" wire:key="task-{{ $task->id }}">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                             <a href="{{ route('tasks.show',$task->id) }}">{{ $task->title }}</a>
                         </th>
@@ -69,6 +69,7 @@
                 @endforeach
                 </tbody>
             </table>
+
             {{ $tasks->links() }}
         </div>
     </div>

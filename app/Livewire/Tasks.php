@@ -32,7 +32,7 @@ class Tasks extends Component
     public function render()
     {
         return view('livewire.tasks', [
-            'tasks' => Task::search($this->search)
+            'tasks' => Task::search($this->search,15)
         ]);
     }
 }

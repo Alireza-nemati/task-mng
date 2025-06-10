@@ -23,6 +23,7 @@ class Task extends Model
     {
         return self::where('title', 'like', "%{$value}%")
             ->orWhere('description', 'like', "%{$value}%")
+            ->orderBy('completed')
             ->paginate($paginate);
     }
 
