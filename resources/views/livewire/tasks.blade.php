@@ -6,11 +6,18 @@
 
 <div class="py-12">
     <div class="max-w-6xl mx-auto  p-4 bg-white sm:rounded-lg">
-        <div class="mb-3 lg:max-w-3/12">
+        <div class="inline">
+            <a href="{{ route('tasks.create') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none ">
+                {{ __('Add') }}
+            </a>
+        </div>
+
+        <div class="mb-3 lg:max-w-3/12 inline-grid">
             <input wire:model.live="search" type="text" id="first_name"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                    placeholder="Search"/>
         </div>
+
         <div class="relative overflow-x-auto">
             <table class="w-full text-sm text-center rtl:text-right text-gray-500 mb-3">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
@@ -55,10 +62,10 @@
                         </td>
                         <td class="px-6 py-4">
                             @if(!$task->completed)
-                            <a href="#" wire:click="completed({{ $task->id }})" class="font-medium text-green-500  hover:underline">Done</a>
+                            <a href="" wire:click="completed({{ $task->id }})" class="font-medium text-green-500  hover:underline">Done</a>
                             |
 
-                            <a href="#" class="font-medium text-blue-600  hover:underline">Edit</a>
+                            <a href="{{ route('tasks.edit',$task->id) }}" class="font-medium text-blue-600  hover:underline">Edit</a>
                             |@endif
                             <a href="#" wire:click="delete({{ $task->id }})"
                                wire:confirm="Are you sure you want to delete this task?"
@@ -74,5 +81,4 @@
 
         </div>
     </div>
-
 </div>

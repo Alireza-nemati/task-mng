@@ -19,13 +19,16 @@ class Task extends Model
         'priority',
     ];
 
-    public static function search($value,$paginate = 5)
+    public static function search($value, $paginate = 5)
     {
         return self::where('title', 'like', "%{$value}%")
             ->orWhere('description', 'like', "%{$value}%")
             ->orderBy('completed')
+            ->orderByRaw("FIELD(priority, 'high', 'medium', 'low')")
+
             ->paginate($paginate);
     }
+
 
 
 }

@@ -15,24 +15,14 @@
         <div class="mb-4">
             <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 ">{{ __('Title') }}</label>
             <input type="text" id="default-input"
-                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                   wire:model="title">
-            @error('title')
-            <p class="mt-2 text-sm text-red-600 ">
-                {{ $message }}
-            </p>
-            @enderror
+                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" wire:model="title">
         </div>
 
         <div class="mb-4">
             <label for="message" class="block mb-2 text-sm font-medium text-gray-900 ">{{ __('Description') }}</label>
             <textarea id="message" rows="4" wire:model="description"
-                      class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"></textarea>
-            @error('description')
-            <p class="mt-2 text-sm text-red-600 ">
-                {{ $message }}
-            </p>
-            @enderror
+                      class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                      ></textarea>
         </div>
 
         <div class="mb-4">
@@ -40,15 +30,16 @@
             <select id="countries" wire:model="priority"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                 <option disabled>Choose a priority</option>
-                <option selected value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
+                <option  value="low">Low</option>
+                <option  value="medium">Medium</option>
+                <option  value="high">High</option>
             </select>
         </div>
 
-        <button type="button" wire:click="create"
+        <button type="button"
+                wire:click="updateTask"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none ">
-            {{ __('Add') }}
+            Update
         </button>
 
 
